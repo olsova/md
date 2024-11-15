@@ -52,7 +52,7 @@ jobs:
           tar -xzf md-plugin.tar.gz
           mkdir -p ~/.trivy/plugins/md
           mv md ~/.trivy/plugins/md/
-          mv plugin.yaml ~/.trivy/plugins/md/
+          cp plugin.yaml ~/.trivy/plugins/md/
           trivy plugin info md
           rm -rf ~/.trivy/plugins/md
 
@@ -61,7 +61,7 @@ jobs:
           go build ./
           mkdir -p ~/.trivy/plugins/md
           mv md ~/.trivy/plugins/md/
-          mv plugin.yaml ~/.trivy/plugins/md/
+          cp plugin.yaml ~/.trivy/plugins/md/
           trivy plugin info md
           rm -rf ~/.trivy/plugins/md
 
