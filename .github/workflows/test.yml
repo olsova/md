@@ -11,14 +11,13 @@ jobs:
   unittest:
     strategy:
       matrix:
-        os: [ ubuntu-22.04, macos-12 ]
-        plugin-release:
+        include:
           - os: ubuntu-22.04
             url: https://github.com/dramf/md/releases/download/v0.1.0/md_0.1.0_linux-amd64.tar.gz
           - os: macos-12
             url: https://github.com/dramf/md/releases/download/v0.1.0/md_0.1.0_darwin-arm64.tar.gz
     name: Test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.include.os }}
     steps:
 
       - name: Set up Go
@@ -47,7 +46,7 @@ jobs:
 
       - name: Install plugin from release
         run: |
-          PLUGIN_URL=${{ matrix.plugin-release.url }}
+          PLUGIN_URL=${{ matrix.include.url }}
           curl -L $PLUGIN_URL -o md-plugin.tar.gz
           tar -xzf md-plugin.tar.gz
           mkdir -p ~/.trivy/plugins/md
