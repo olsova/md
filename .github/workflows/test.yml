@@ -42,7 +42,7 @@ jobs:
       - name: Install plugin from repository
         run: |
           trivy plugin install github.com/olsova/md
-          trivy image alpine -f json --output plugin=md
+          trivy plugin info md
           rm -rf ~/.trivy/plugins/md
 
       - name: Install plugin from release
@@ -53,7 +53,7 @@ jobs:
           mkdir -p ~/.trivy/plugins/md
           mv md ~/.trivy/plugins/md/
           mv plugin.yaml ~/.trivy/plugins/md/
-          trivy image alpine -f json --output plugin=md
+          trivy plugin info md
           rm -rf ~/.trivy/plugins/md
 
       - name: Install plugin from local file
@@ -62,7 +62,7 @@ jobs:
           mkdir -p ~/.trivy/plugins/md
           mv md ~/.trivy/plugins/md/
           mv plugin.yaml ~/.trivy/plugins/md/
-          trivy image alpine -f json --output plugin=md
+          trivy plugin info md
           rm -rf ~/.trivy/plugins/md
 
       - name: Run unit tests
