@@ -41,7 +41,7 @@ jobs:
           fi
       - name: Install plugin from repository
         run: |
-          trivy plugin install github.com/dramf/md@add-uri
+          trivy plugin install github.com/olsova/md
           trivy image alpine -f json --output plugin=md
           rm -rf ~/.trivy/plugins/md
 
